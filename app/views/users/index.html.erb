@@ -1,0 +1,29 @@
+<h1>Welcome to Re-former!</h1>
+
+<%= link_to "New User", new_user_path %> <br> <br>
+
+<table>
+
+	<thead>
+		<tr>
+			<th>Username:</th>
+			<th>Email:</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<th><%= user.username %></th>
+				<th><%= user.email %></th>
+				<th><%= link_to "Show", user %></th>
+				<th><%= link_to "Edit", edit_user_path(user)%></th>
+				<th><%= link_to "Delete", user, method: :delete, data: { confirm: 'Are you sure?' } %></th>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>

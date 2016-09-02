@@ -1,0 +1,35 @@
+<!-- <form action="create" method="post" accept-charset="UTF-8">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label name="user[username]">Username:</label>
+  <input type="text" name="user[username]"><br>
+  <label name="user[email]">Email:</label>
+  <input type="text" name="user[email]"><br>
+  <label name="user[password]">Password:</label>
+  <input type="password" name="user[password]"><br>
+  <input type="submit" value="Sign up!">
+</form> -->
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user do |f| %> 
+	<%= f.label :username, 'Username:' %>
+	<%= f.text_field :username %> <br>
+
+	<%= f.label :email, 'Email:' %>
+	<%= f.text_field :email %> <br>
+
+	<%= f.label :password, 'Password:' %>
+	<%= f.password_field :password %> <br>
+
+	<%= f.submit "New User" %>
+<% end %>
